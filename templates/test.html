@@ -2,11 +2,25 @@
 {% block body %}
  
 <div class="block1">
-<h1>Hello {{name}}!</h1>
-  <h2>Here is an interesting quote for you: </h2>
-  <p>
-##{{quote}}
-  </p>
-<img src="http://www.naturalprogramming.com/images/smilingpython.gif">
+<!-- <h1>{{name}}!</h1> -->
+<h1>Coding Challenge Demo</h1>
+
+<script>
+function check()
+{
+  document.getElementById('f1').innerHTML = document.myform.userid.value;
+}
+</script>
+
+<form name="myform">
+  Input User ID:
+  <input type="text" name="userid">
+  <br>
+  <br>
+  <p><input type="submit" value="Submit" onclick='check(); return false'></p>
+</form>
+<p>Enter userid and click on Submit to find similar users.</p>
+<p id='f1'></p>
+
 </div>
 {% endblock %}
