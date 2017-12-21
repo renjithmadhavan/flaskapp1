@@ -12,15 +12,29 @@ function check()
 }
 </script>
 
-<form name="myform">
-  Input User ID:
-  <input type="text" name="userid">
-  <br>
-  <br>
-  <p><input type="submit" value="Submit" onclick='check(); return false'></p>
+<!-- <form name="myform" action= "{{ url_for('handle_data') }}" method = "post"> -->
+<form name="myform" action= "/" method = "post">
+  <table>
+    <tr>
+      <td>Input User ID:</td>
+      <td><input type="text" name="userid"></td>
+    </tr>
+    <tr>
+      <td>Number of Similar Users to show:</td>
+      <td><input type="text" name="number_show"></td>
+    </tr>
+
+  <tr>
+<!--    <input type="submit" value="Submit" onclick='check(); return false'> -->
+  <td><br><input type="submit" value="Submit"></td>
+  </tr>
+</table>
 </form>
 <p>Enter userid and click on Submit to find similar users.</p>
 <p id='f1'></p>
-
+<p>Below are the similar users:</p> <br>
+{% for item in result %}
+  <li>{{ item }}</li>
+{% endfor %}
 </div>
 {% endblock %}
