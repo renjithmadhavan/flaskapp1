@@ -34,7 +34,7 @@ score_matrix = score_matrix.fillna(0)
 
 print(str(datetime.now()))
 #for i in range(len(score_matrix.index)):
-for i in range(2000):
+for i in range(3000, 4000):
     print(i)
     #if i%200 == 0:
      #   print(i)
@@ -50,5 +50,5 @@ for i in range(2000):
         #print(current_user)
         #print(compare_user)
         score_matrix.iloc[i, j] = similarity(current_user, compare_user)
-save_pickle(score_matrix, "score_matrix_save1.pickle")
+save_pickle(score_matrix, "score_matrix_save3.pickle")
 print(str(datetime.now()))
