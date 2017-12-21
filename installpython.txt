@@ -1,3 +1,7 @@
+git clone https://github.com/renjithmadhavan/flaskapp1.git
+cd flaskapp1
+
 # wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-curl -o https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-bash ~/Downloads/Anaconda3-5.0.1-Linux-x86_64.sh
+curl -O https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
+bash Anaconda3-5.0.1-Linux-x86_64.sh
+source /home/renjith/.bashrc
