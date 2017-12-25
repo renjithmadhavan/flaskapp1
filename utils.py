@@ -1,4 +1,3 @@
-#!/home/renjith/anaconda3/bin/python
 import pandas as pd
 import numpy as np
 from datetime import datetime
@@ -23,6 +22,13 @@ def save_pickle(obname, filename):
     pickle.dump(obname, open(filename, "wb"))
     return 0
 
+def load_pickle(filename):
+    with open(filename, 'rb') as f:
+        content = pickle.load(f)
+    return content
+
+
+
 df1 = readcsv('user_course_views.csv')
 user_courses = df1[['user_handle', 'course_id']].groupby(['user_handle', 'course_id']).size().reset_index(name = 'counts')
 print(user_courses.head())
@@ -34,7 +40,11 @@ score_matrix = score_matrix.fillna(0)
 
 print(str(datetime.now()))
 #for i in range(len(score_matrix.index)):
-for i in range(3000, 4000):
+# adjust the range and run the score in a cluster
+# final out put is merged as a pickle file and copied.
+# I am naming the final output file as "merged_scorematrix.pickle"
+
+for i in range(2000):
     print(i)
     #if i%200 == 0:
      #   print(i)
@@ -50,5 +60,5 @@ for i in range(3000, 4000):
         #print(current_user)
         #print(compare_user)
         score_matrix.iloc[i, j] = similarity(current_user, compare_user)
-save_pickle(score_matrix, "score_matrix_save3.pickle")
+save_pickle(score_matrix, "score_matrix_save1.pickle")
 print(str(datetime.now()))
