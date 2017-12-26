@@ -4,7 +4,8 @@ from datetime import datetime
 import pickle
 import sys
 
-data_dir="C:\\renjith\\projects\\data\\"
+#data_dir="C:\\renjith\\projects\\data\\"
+data_dir="/home/renjith/pluralsight/data/"
 
 def readcsv(filename):
     df = pd.read_csv(filename)

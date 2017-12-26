@@ -4,12 +4,13 @@ app = Flask(__name__)
 
 @app.route("/", methods = ['GET', 'POST'])
 def process_data():
-    result = ""
     if request.method == 'POST':
-        userid = request.form['userid']
-        number_show = request.form['number_show']
-        result = find_similar_users(userid, number_show)
-    return render_template('test.html', result = result)
+        userid = int(request.form['userid'])
+        number_show = int(request.form['number_show'])
+        result = list(find_similar_users(userid, number_show))
+        return render_template('test.html', number_show = number_show, userid = userid, result = result)
+    else:
+        return render_template('test.html')
 
 @app.route("/handle_data", methods=['POST'])
 def handle_data():

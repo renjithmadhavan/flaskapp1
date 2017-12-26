@@ -32,9 +32,10 @@ function check()
 </form>
 <p>Enter userid and click on Submit to find similar users.</p>
 <p id='f1'></p>
-<p>Below are the similar users:</p> <br>
+<p>Below are the top {{ number_show }} similar users for User {{ userid }} :</p> <br>
+<ul>
 {% for item in result %}
-  <li>{{ item }}</li>
+<li>{{item}}</li>
 {% endfor %}
-</div>
+</ul>
 {% endblock %}

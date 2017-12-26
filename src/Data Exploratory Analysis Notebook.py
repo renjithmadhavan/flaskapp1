@@ -8,7 +8,7 @@
 get_ipython().system('head *.csv')
 
 
-# In[52]:
+# In[1]:
 
 import pandas as pd
 import numpy as np
@@ -105,6 +105,21 @@ print(levelcounts)
 levelcounts.plot(kind = 'bar')
 
 ## Beginner and Intermediate has similar number of views, advanced has far less.
+
+
+# In[2]:
+
+user_interests_df = pd.read_csv("user_interests.csv")
+
+
+# In[8]:
+
+user_interests_df[user_interests_df.user_handle == 8035]
+
+
+# In[9]:
+
+user_interests_df[user_interests_df.user_handle == 7200]
 
 
 # In[ ]:
