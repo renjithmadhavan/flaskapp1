@@ -17,7 +17,7 @@ get_ipython().magic('matplotlib inline')
 pd.options.display.mpl_style = 'default'
 
 
-# In[9]:
+# In[20]:
 
 user_course_views_df = pd.read_csv('user_course_views.csv')
 print(user_course_views_df.shape)
@@ -120,6 +120,172 @@ user_interests_df[user_interests_df.user_handle == 8035]
 # In[9]:
 
 user_interests_df[user_interests_df.user_handle == 7200]
+
+
+# In[10]:
+
+get_ipython().system('ls -ltr ../../data')
+
+
+# In[17]:
+
+df1 = pd.read_pickle('../../data/similar_df_master.pickle')
+
+
+# In[29]:
+
+df1.loc[1234]
+
+
+# In[28]:
+
+user_course_views_df[user_course_views_df.user_handle == 1234]
+
+
+# In[27]:
+
+user_course_views_df[user_course_views_df.user_handle == 6092]
+
+
+# In[30]:
+
+from utils import *
+
+
+# In[92]:
+
+df1 = readcsv('user_course_views.csv')
+
+
+# In[54]:
+
+user_courses = df1[['user_handle', 'course_id']].groupby(['user_handle', 'course_id']).size().reset_index(name = 'counts')
+usercoursematrix = pd.pivot_table(user_courses, values = 'counts', index = ['user_handle'], columns = 'course_id')
+
+
+# In[55]:
+
+current_user = usercoursematrix.loc[1234]
+
+
+# In[56]:
+
+compare_user = usercoursematrix.loc[6092]
+
+
+# In[51]:
+
+def similarity(user1, user2):
+    user1 = np.array(user1)
+    user2 = np.array(user2) 
+    commoncourses = [i for i in range(len(user1)) if user1[i] > 0 and user2[i] > 0]
+    return len(commoncourses)
+
+
+# In[58]:
+
+#current_user
+
+
+# In[ ]:
+
+
+
+
+# In[59]:
+
+similarity(current_user, compare_user )
+
+
+# In[61]:
+
+current_user[1:10]
+
+
+# In[62]:
+
+compare_user[1:10]
+
+
+# In[63]:
+
+merged_df = pd.read_pickle(data_dir + 'merged_scorematrix.pickle')
+
+
+# In[65]:
+
+merged_df.loc[12].values.argsort()
+
+
+# In[84]:
+
+merged_df = pd.read_pickle(data_dir + 'merged_scorematrix.pickle')
+
+
+# In[85]:
+
+tmp = np.flip(merged_df.values.argsort(), 1)
+
+
+# In[86]:
+
+similar_df = pd.DataFrame.from_records(merged_df.columns[tmp], index = merged_df.index)
+
+
+# In[72]:
+
+from utils import *
+
+
+# In[74]:
+
+get_ipython().magic('pinfo2 find_similarity_score')
+
+
+# In[81]:
+
+importlib.reload(sys.modules['utils'])
+
+
+# In[82]:
+
+from utils import *
+
+
+# In[96]:
+
+find_similarity_score(12, 1011)
+
+
+# In[88]:
+
+similar_df.loc[12][:10]
+
+
+# In[93]:
+
+df1[df1.user_handle == 7580]
+
+
+# In[95]:
+
+df1[df1.course_id == "java-patterns-concurrency-multi-threading"]
+
+
+# In[114]:
+
+def find_common_courses(user1, user2):
+    user_course_df = pd.read_pickle(data_dir + 'usercoursematrix.pickle')
+    user1 = user_course_df.loc[user1]
+    user2 = user_course_df.loc[user2]
+    commoncourses = [user_course_df.columns[i] for i in range(len(user1)) if user1[i] > 0 and user2[i] > 0]
+    return commoncourses
+
+
+# In[112]:
+
+user_course_df.columns[2802]
+user1.columns
 
 
 # In[ ]:
