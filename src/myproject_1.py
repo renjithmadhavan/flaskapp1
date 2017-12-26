@@ -2,10 +2,6 @@ from flask import Flask, render_template, request
 from utils import *
 app = Flask(__name__)
 
-def find_similar_users():
-    return result
-
-
 @app.route("/", methods = ['GET', 'POST'])
 def process_data():
     result = ""
@@ -13,7 +9,6 @@ def process_data():
         userid = request.form['userid']
         number_show = request.form['number_show']
         result = find_similar_users(userid, number_show)
-        result = [123, 123, 32, 43]
     return render_template('test.html', result = result)
 
 @app.route("/handle_data", methods=['POST'])
