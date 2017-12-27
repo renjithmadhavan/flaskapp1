@@ -3,7 +3,7 @@ cd flaskapp1
 
 # wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 curl -O https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-bash Anaconda3-5.0.1-Linux-x86_64.sh
+bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p /home/renjith/anaconda
 source /home/renjith/.bashrc
 
 
