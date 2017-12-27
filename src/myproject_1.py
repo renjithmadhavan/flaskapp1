@@ -8,6 +8,7 @@ def process_data():
         userid = int(request.form['userid'])
         number_show = int(request.form['number_show'])
         result = list(find_similar_users(userid, number_show))
+        result.remove(userid)
         return render_template('test.html', number_show = number_show, userid = userid, result = result)
     else:
         return render_template('test.html')
